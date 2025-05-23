@@ -7,12 +7,20 @@ flyway = "11.8.2"
 postgresql = "42.7.5"
 spring-boot = "3.4.5"
 itest = "1.0.4"
+guava = "33.4.8-jre"
+aws-java-jdk-s3 = "1.12.783"
+spring-cloud-aws-dependencies = "3.3.0"
+lombok = "1.18.38"
 
 [libraries]
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
+guava = { module = "com.google.guava:guava", version.ref = "guava"}
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
 flyway-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+aws-java-jdk-s3 = { module = "com.amazonaws:aws-java-sdk-s3", version.ref = "aws-java-jdk-s3"}
+spring-cloud-aws-dependencies = { module = "io.awspring.cloud:spring-cloud-aws-dependencies", version.ref = "spring-cloud-aws-dependencies"}
 
 [bundles]
 database = [
@@ -20,7 +28,6 @@ database = [
     "flyway-postgresql",
     "postgresql",
 ]
-
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

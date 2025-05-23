@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: aws,rest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vrexercise
+    username: vrexercise
+    password: vrexercise
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+  cloud:
+    aws:
+      region:
+        static: eu-west-1
+      credentials:
+        access-key: test
+        secret-key: test
+      sqs:
+        endpoint: http://localhost:4566
+      s3:
+        endpoint: http://s3.localhost.localstack.cloud:4566
+
+message-template-service:
+  s3-sqs-consumer:
+    queue-name: s3-notifications-queue
