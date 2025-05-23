@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: vrexercise
+      POSTGRES_PASSWORD: vrexercise
+      POSTGRES_DB: vrexercise
+    ports:
+      - "5432:5432"
+  localstack:
+    build:
+      context: ./localstack
+    environment:
+      - SERVICES=s3,sqs
+      - AWS_DEFAULT_REGION=eu-west-1
+      - LOCALSTACK_HOST=localhost
+      - PERSISTENCE=/tmp/localstack/data
+      - ALLOW_NONSTANDARD_REGIONS=1
+    ports:
+      # Edge
+      - 4566:4566
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
